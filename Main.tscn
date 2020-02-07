@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://InputManager.gd" type="Script" id=3]
+[ext_resource path="res://sample.png" type="Texture" id=4]
+[ext_resource path="res://EnemiesInRange.gd" type="Script" id=6]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="sample" type="Sprite" parent="."]
+position = Vector2( 735.102, 497.501 )
+texture = ExtResource( 4 )
+
+[node name="WorldColliders" type="StaticBody2D" parent="sample"]
+collision_layer = 16
+collision_mask = 29
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="sample/WorldColliders"]
+position = Vector2( 57.1204, 0 )
+polygon = PoolVector2Array( -732.412, 494.792, -735.635, -498.45, -785.973, -495.994, -786.649, 224.603, -780.921, 496.678 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="sample/WorldColliders"]
+position = Vector2( 5.03491, 52.8683 )
+polygon = PoolVector2Array( -734.214, -496.804, 740.131, -492.703, 740.131, -599.332, -805.983, -584.978, -818.287, -505.007 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="sample/WorldColliders"]
+position = Vector2( -65.4561, 15.1052 )
+polygon = PoolVector2Array( 740.131, -593.18, 739.33, 507.334, 921.096, 500.518, 852.934, -580.99 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="sample/WorldColliders"]
+position = Vector2( 10.0701, -60.4209 )
+polygon = PoolVector2Array( -778.417, 500.518, 912.008, 491.43, 907.464, 664.108, -787.505, 618.666 )
+
+[node name="Enemy" parent="." instance=ExtResource( 1 )]
+
+[node name="Enemy2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 282.956, 140.433 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 871.956, 535.433 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 945.956, 363.433 )
+
+[node name="Enemy8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 307.956, 284.433 )
+
+[node name="Enemy7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 55.956, 345.433 )
+
+[node name="Enemy6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 644.956, 740.433 )
+
+[node name="Enemy5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 718.956, 568.433 )
+
+[node name="EnemiesInRange" type="Node2D" parent="."]
+script = ExtResource( 6 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 450.071, 476.442 )
+
+[node name="InputManager" type="Node2D" parent="Player"]
+position = Vector2( -481.09, -359.511 )
+script = ExtResource( 3 )
+[connection signal="any_gesture" from="Player/InputManager" to="Player" method="_on_InputManager_any_gesture"]
